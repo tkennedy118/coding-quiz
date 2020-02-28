@@ -23,6 +23,30 @@ $(document).ready(function() {
             a3: "<scripting>",
             a4: "<javascript>",
             answer: "a2"
+        },
+        {
+            question: "Which of the following type of variables is visible everywhere in your JavaScript code?",
+            a1: "global variable",
+            a2: "local variable",
+            a3: "document variable",
+            a4: "all of the above",
+            answer: "a1"
+        },
+        {
+            question: "Which of the following functions of an array object adds one or more elements to the end of an array and returns the new length of the array?",
+            a1: "pop()",
+            a2: "join()",
+            a3: "map()",
+            a4: "push()",
+            answer: "a4"
+        },
+        {
+            question: "How would you create a variable and set it to an html element with id=\"btn-blue\"?",
+            a1: "var buttonEl = html(\".btn-blue\");",
+            a2: "var buttonEl = getElementByName(\"#btn-blue\");",
+            a3: "var buttonEl = querySelectorAll(\".btn-blue\");",
+            a4: "var buttonEl = querySelector(\"#btn-blue\");",
+            answer: "a4"
         }
     ];
 
