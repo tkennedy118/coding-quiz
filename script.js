@@ -134,10 +134,6 @@ $(document).ready(function() {
             if(time === 0) {
 
                 clearInterval(interval);
-
-                $("#question-screen").addClass("d-none");
-                $("#timer-screen").addClass("d-none");
-                $("#results-screen").removeClass("d-none");
                 updateScore();
                 displayResults();
             }
@@ -145,6 +141,11 @@ $(document).ready(function() {
     }
 
     const displayResults = function() {
+
+        // show correct screens
+        $("#question-screen").addClass("d-none");
+        $("#timer-screen").addClass("d-none");
+        $("#results-screen").removeClass("d-none");
 
         // clear timer
         clearInterval(interval);
@@ -200,9 +201,7 @@ $(document).ready(function() {
         } 
         // there are no more questions, hide question screen and display results screen
         else {
-            $("#question-screen").addClass("d-none");
-            $("#timer-screen").addClass("d-none");
-            $("#results-screen").removeClass("d-none");
+
             displayResults();
         }
     });
