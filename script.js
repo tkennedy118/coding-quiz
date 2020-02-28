@@ -1,6 +1,7 @@
 
 $(document).ready(function() {
 
+    var interval;
     let score = 0;
     let currentQ = 0;
     let currentA = 0;
@@ -35,6 +36,7 @@ $(document).ready(function() {
         wasCorrect = false;
 
         $("#initial-screen").removeClass("d-none");
+        $("#timer-screen").addClass("d-none");
         $("#question-screen").addClass("d-none");
         $("#results-screen").addClass("d-none");
         $("#scores-screen").addClass("d-none");
@@ -48,6 +50,7 @@ $(document).ready(function() {
         // if first question, hide all other screens and display question screen
         if (currentQ === 0) {
             $("#initial-screen").addClass("d-none");
+            $("#timer-screen").removeClass("d-none");
             $("#question-screen").removeClass("d-none");
         }
 
@@ -94,7 +97,33 @@ $(document).ready(function() {
         }
     }
 
+    // function to handle the timer
+    const startTimer = function() {
+
+        let time = 59;
+
+        interval = setInterval(function() {
+
+            $("#timer").html(time);
+            time--;
+
+            if(time === 0) {
+
+                clearInterval(interval);
+
+                $("#question-screen").addClass("d-none");
+                $("#timer-screen").addClass("d-none");
+                $("#results-screen").removeClass("d-none");
+                updateScore();
+                displayResults();
+            }
+        }, 100);
+    }
+
     const displayResults = function() {
+
+        // clear timer
+        clearInterval(interval);
 
         // display user score. NOTE: ONLY WORKS WHEN THERE ARE ONLY 5 QUESTIONS
         let userScore = score + "%";
@@ -122,6 +151,7 @@ $(document).ready(function() {
 
     $("#btn-start").on("click", function() {
         init();
+        startTimer();
         loadQuestion()
     });
 
@@ -147,6 +177,7 @@ $(document).ready(function() {
         // there are no more questions, hide question screen and display results screen
         else {
             $("#question-screen").addClass("d-none");
+            $("#timer-screen").addClass("d-none");
             $("#results-screen").removeClass("d-none");
             displayResults();
         }
