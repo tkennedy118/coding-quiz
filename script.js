@@ -102,7 +102,19 @@ $(document).ready(function() {
 
     const displayScores = function() {
 
-        
+        // loop through local storage
+        for (var i = 0; i < localStorage.length; i++) {
+            
+            // get info
+            var li = $("<li></li>");
+            var key = localStorage.key(i);
+
+            // add info
+            li.addClass("list-group-item");
+            li.html(key + ": " + localStorage.getItem(key) + "%");
+
+            $("#score-list").append(li);
+        }
     }
 
     /* EVENT HANDLERS =============================================================================================== */
@@ -139,13 +151,22 @@ $(document).ready(function() {
         }
     });
 
-    $("#btn-restart").on("click", init);
+    $(".btn-restart").on("click", init);
 
     $("#btn-add-score").on("click", function() {
 
         // get user input and local storage
-        let initials = $("#user-initials").val().toLowerCase();
+        let initials = $("#user-initials").val().toUpperCase();
         let storedScore = localStorage.getItem(initials);
+
+        // exit function if user initials not entered properly
+        if (initials.length < 3 || initials === "   ") {
+            return false;
+        }
+
+        // hide 'results-screen' and display 'scores-screen'
+        $("#results-screen").addClass("d-none");
+        $("#scores-screen").removeClass("d-none");
 
         // check if user initials already exist in local storage
         if (initials !== null) {
