@@ -117,7 +117,7 @@ $(document).ready(function() {
                 updateScore();
                 displayResults();
             }
-        }, 100);
+        }, 1000);
     }
 
     const displayResults = function() {
