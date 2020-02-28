@@ -37,6 +37,7 @@ $(document).ready(function() {
         $("#initial-screen").removeClass("d-none");
         $("#question-screen").addClass("d-none");
         $("#results-screen").addClass("d-none");
+        $("#scores-screen").addClass("d-none");
     }
 
     // function to display questions
