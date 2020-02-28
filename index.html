@@ -16,49 +16,53 @@
         </header>
         
         <main>
-            <div class="p-3 text-center text-dark bg-light">
-                <div class="initial-screen">
-                    <p class="question">Hit START to begin the quiz!</p>
-                </div>
-
-                <br><br>
-
-                <button type="button" class="btn btn-dark">
-                    START
-                </button>
-            </div>
-
             <div class="p-3 text-dark bg-light">
-                <div class="question-screen">
-                    <p class="question">How would you create a variable that is a random number from 1-10?</p>
 
-                    <div class="custom-control custom-radio">
-                        <input type="radio" id="answerOne" name="customRadio" class="custom-control-input">
-                        <label class="custom-control-label" for="answerOne">Not the answer</label>
-                    </div>
-                    <div class="custom-control custom-radio">
-                        <input type="radio" id="answerTwo" name="customRadio" class="custom-control-input">
-                        <label class="custom-control-label" for="answerTwo">Not the answer</label>
-                    </div>
-                    <div class="custom-control custom-radio">
-                        <input type="radio" id="answerThree" name="customRadio" class="custom-control-input">
-                        <label class="custom-control-label" for="answerThree">The answer</label>
-                    </div>
-                    <div class="custom-control custom-radio">
-                        <input type="radio" id="answerFour" name="customRadio" class="custom-control-input">
-                        <label class="custom-control-label" for="answerFour">Not the answer</label>
-                    </div>
+                <!-- initial screen -->
+                <div id="initial-screen" class="text-center">
+                    <p class="question">Hit START to begin the quiz!</p>
+
+                    <br><br>
+
+                    <button type="button" class="btn btn-dark" id="btn-start">
+                        START
+                    </button>
                 </div>
-                <div class="text-right">
-                    <button type="button" class="btn btn-dark">Next</button>
+
+                <!-- question screen -->
+                <div id="question-screen" class="d-none">
+                    <form>
+                        <p id="question"></p>
+
+                        <div class="form-check">
+                            <input type="radio" id="answer1" name="customRadio" class="form-check-input">
+                            <label id="q1-label" class="form-check-label" for="answer1"></label>
+                        </div>
+                        <div class="form-check">
+                            <input type="radio" id="answer2" name="customRadio" class="form-check-input">
+                            <label id="q2-label" class="form-check-label" for="answer2"></label>
+                        </div>
+                        <div class="form-check">
+                            <input type="radio" id="answer3" name="customRadio" class="form-check-input">
+                            <label id="q3-label" class="form-check-label" for="answer3"></label>
+                        </div>
+                        <div class="form-check">
+                            <input type="radio" id="answer4" name="customRadio" class="form-check-input">
+                            <label id="q4-label" class="form-check-label" for="answer4"></label>
+                        </div>
+
+                        <div class="text-right">
+                            <button type="button" class="btn btn-dark" id="btn-next">Next</button>
+                        </div>
+                    </form>
+
                 </div>
 
             </div>
-            
-            
+             
         </main>
-
     </div>
+
 
     <!-- jQuery, javascript file for the Bootstrap's javascript file to function -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
