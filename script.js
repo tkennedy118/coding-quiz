@@ -5,6 +5,7 @@ $(document).ready(function() {
     let currentQ = 0;
     let currentA = 0;
     let wasCorrect = false;
+    let userAnsId = "";             // the html element id of the answer selected by user
     const questions = [
         {
             question: "How would you create a variable that is a random number from 1-10?",
@@ -55,7 +56,6 @@ $(document).ready(function() {
     // update score and global values
     const updateScore = function() {
         
-        let userAnsId = "";                         // the html element id of the answer selected by user
         let selected = false;                       // whether or not a radio button was selected
         let correctAns = questions[currentQ].answer;  // correct answer of current question
 
@@ -90,7 +90,10 @@ $(document).ready(function() {
     }
 
     const displayResults = function() {
-        
+
+        // display user score. NOTE: ONLY WORKS WHEN THERE ARE ONLY 5 QUESTIONS
+        let userScore = score + "%";
+        $("#user-score").html(userScore);
     }
 
     /* EVENT HANDLERS =============================================================================================== */
@@ -114,10 +117,21 @@ $(document).ready(function() {
             
             currentQ++;
             loadQuestion();
+
+            // clear radio button
+            $("#" + userAnsId).prop("checked", false);
+
         } 
-        // there are no more questions
+        // there are no more questions, hide question screen and display results screen
         else {
+            $("#question-screen").addClass("d-none");
+            $("#results-screen").removeClass("d-none");
             displayResults();
         }
+    });
+
+    $("btn-restart").on("click", function() {
+        init();
+        loadQuestion();
     });
 })
