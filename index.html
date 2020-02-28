@@ -25,7 +25,7 @@
                 <div id="initial-screen" class="text-center">
                     <p class="question">Hit START to begin the quiz!</p>
 
-                    <br><br>
+                    <br><br><br>
 
                     <button type="button" class="btn btn-dark" id="btn-start">
                         START
@@ -65,21 +65,40 @@
 
                 <!-- display results screen -->
                 <div id="results-screen" class="d-none">
-                    <div class="pt-5 text-center">
+                    <div class="pt-3 text-center">
                         <h3>Your Score</h3>
                         <p id="user-score"></p>
                     </div>
 
-                    <div class="row justify-content-end">
-                        <div class="mx-1">
-                            <button type="button" class="btn btn-dark" id="btn-restart">Restart</button>
+                    <br><br>
+
+                    <div class="row justify-content-between">
+                        <div class="col-6">
+                            <div class="p-1">
+                                <button type="button" class="btn btn-dark" id="btn-restart">Restart</button>
+                            </div>
                         </div>
-                        <div class="mx-1">
-                            <button type="button" class="btn btn-dark" id="btn-scores">Scores</button>
+                        <div class="col-6">
+                            <div class="row justify-content-end">
+                                <form class="p-1">
+                                    <input type="initials" class="form-control" id="user-initials" placeholder="Initials" maxlength="3">
+                                </form>
+                                <div class="p-1">
+                                    <button type="button" class="btn btn-dark" id="btn-add-score">Add Score</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <!-- -------------------------------------------------------------------------------------------- -->
+
+                <div class="scores-screen" class="d-none">
+                    <div class="pt-3 text-center">
+                        <h3>All Scores</h3>
+                        <ul class="list-group list-group-flush" id="score-list">
+                        </ul>
+                    </div>
+                </div>
             </div>
         </main>
     </div>

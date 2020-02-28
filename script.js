@@ -100,6 +100,11 @@ $(document).ready(function() {
         $("#user-score").html(userScore);
     }
 
+    const displayScores = function() {
+
+        
+    }
+
     /* EVENT HANDLERS =============================================================================================== */
 
     $("#btn-start").on("click", function() {
@@ -136,7 +141,26 @@ $(document).ready(function() {
 
     $("#btn-restart").on("click", init);
 
-    $("#btn-scores").on("click", function() {
+    $("#btn-add-score").on("click", function() {
 
-    })
+        // get user input and local storage
+        let initials = $("#user-initials").val().toLowerCase();
+        let storedScore = localStorage.getItem(initials);
+
+        // check if user initials already exist in local storage
+        if (initials !== null) {
+            // matching initals were found
+
+            // only replace score if it is better
+            if (score > storedScore) {
+                localStorage.setItem(initials, score)
+            }
+
+        } else {
+            // add score if no matching initials were found
+            localStorage.setItem(initials, score)
+        }
+
+        displayScores();
+    });
 })
