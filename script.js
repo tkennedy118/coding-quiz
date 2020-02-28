@@ -33,6 +33,10 @@ $(document).ready(function() {
         score = 0;
         currentQ = 0;
         wasCorrect = false;
+
+        $("#initial-screen").removeClass("d-none");
+        $("#question-screen").addClass("d-none");
+        $("#results-screen").addClass("d-none");
     }
 
     // function to display questions
@@ -130,8 +134,9 @@ $(document).ready(function() {
         }
     });
 
-    $("btn-restart").on("click", function() {
-        init();
-        loadQuestion();
-    });
+    $("#btn-restart").on("click", init);
+
+    $("#btn-scores").on("click", function() {
+
+    })
 })
