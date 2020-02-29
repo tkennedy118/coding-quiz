@@ -1,12 +1,11 @@
 
 $(document).ready(function() {
 
-    var interval;
-    let score = 0;
-    let currentQ = 0;
-    let currentA = 0;
-    let wasCorrect = false;
+    var interval;                   // used to set and clear timer
+    let score = 0;                  // number of correctly answered questions
+    let currentQ = 0;               // used to store the current question in the quesitons array
     let userAnsId = "";             // the html element id of the answer selected by user
+
     const questions = [
         {
             question: "How would you create a variable that is a random number from 1-10?",
@@ -88,8 +87,8 @@ $(document).ready(function() {
     // update score and global values
     const updateScore = function() {
         
-        let selected = false;                       // whether or not a radio button was selected
-        let correctAns = questions[currentQ].answer;  // correct answer of current question
+        let selected = false;                           // whether or not a radio button was selected
+        let correctAns = questions[currentQ].answer;    // correct answer of current question
 
         // check if a radio button was selected
         for (var i = 0; i < 4; i++) {
@@ -112,7 +111,7 @@ $(document).ready(function() {
             (correctAns === "a3" && userAnsId === "answer3") || (correctAns === "a4" && userAnsId === "answer4")) {
             
             // add to score
-            score += 20;
+            score += 1;
             wasCorrect = true;
 
         } else {
@@ -151,7 +150,9 @@ $(document).ready(function() {
         clearInterval(interval);
 
         // display user score. NOTE: ONLY WORKS WHEN THERE ARE ONLY 5 QUESTIONS
-        let userScore = score + "%";
+        console.log("score: " + score + ", number of questions: " + questions.length);
+        let userScore = ((score/questions.length) * 100).toFixed(0) + "%";
+        console.log(userScore);
         $("#user-score").html(userScore);
     }
 
@@ -163,10 +164,11 @@ $(document).ready(function() {
             // get info
             var li = $("<li></li>");
             var key = localStorage.key(i);
+            var storedScore = (localStorage.getItem(key))
 
             // add info
             li.addClass("list-group-item");
-            li.html(key + ": " + localStorage.getItem(key) + "%");
+            li.html(key + ": " + ((storedScore/questions.length) * 100).toFixed(0) + "%");
 
             $("#score-list").append(li);
         }
