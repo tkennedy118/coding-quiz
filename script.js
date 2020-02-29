@@ -1,6 +1,7 @@
 
 $(document).ready(function() {
 
+    var time;                       // used to keep time
     var interval;                   // used to set and clear timer
     let score = 0;                  // number of correctly answered questions
     let currentQ = 0;               // used to store the current question in the quesitons array
@@ -58,9 +59,10 @@ $(document).ready(function() {
         currentQ = 0;
         wasCorrect = false;
 
-        $("#initial-screen").removeClass("d-none");
-        $("#timer-screen").addClass("d-none");
-        $("#question-screen").addClass("d-none");
+        $("#timer-screen").removeClass("d-none");
+        $("#question-screen").removeClass("d-none");
+
+        $("#initial-screen").addClass("d-none");
         $("#results-screen").addClass("d-none");
         $("#scores-screen").addClass("d-none");
     }
@@ -73,7 +75,6 @@ $(document).ready(function() {
         // if first question, hide all other screens and display question screen
         if (currentQ === 0) {
             $("#initial-screen").addClass("d-none");
-            $("#timer-screen").removeClass("d-none");
             $("#question-screen").removeClass("d-none");
         }
 
@@ -117,13 +118,17 @@ $(document).ready(function() {
         } else {
             // user was wrong
             wasCorrect = false;
+            time -= 10;
         }
     }
 
     // function to handle the timer
     const startTimer = function() {
 
-        let time = 59;
+        time = 59;
+
+        // clear timer element
+        $("#timer").empty();
 
         interval = setInterval(function() {
 
@@ -210,7 +215,11 @@ $(document).ready(function() {
         }
     });
 
-    $(".btn-restart").on("click", init);
+    $(".btn-restart").on("click", function() {
+        init();
+        startTimer();
+        loadQuestion();
+    });
 
     $("#btn-add-score").on("click", function() {
 
