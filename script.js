@@ -158,6 +158,9 @@ $(document).ready(function() {
 
     const displayScores = function() {
 
+        // clears list if previously displayed
+        $("#score-list").empty();
+
         // loop through local storage
         for (var i = 0; i < localStorage.length; i++) {
             
@@ -184,7 +187,11 @@ $(document).ready(function() {
 
     $("#btn-next").on("click", function() {
 
+        // update score
         let wasSelected = updateScore();
+
+        // clear radio button
+        $("#" + userAnsId).prop("checked", false);
 
         // return if no answer was selected
         if (wasSelected === false) {
@@ -196,14 +203,9 @@ $(document).ready(function() {
             
             currentQ++;
             loadQuestion();
-
-            // clear radio button
-            $("#" + userAnsId).prop("checked", false);
-
         } 
-        // there are no more questions, hide question screen and display results screen
+        // there are no more questions
         else {
-
             displayResults();
         }
     });
