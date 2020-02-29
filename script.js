@@ -149,10 +149,10 @@ $(document).ready(function() {
         // clear timer
         clearInterval(interval);
 
-        // display user score. NOTE: ONLY WORKS WHEN THERE ARE ONLY 5 QUESTIONS
-        console.log("score: " + score + ", number of questions: " + questions.length);
+        // display user score
         let userScore = ((score/questions.length) * 100).toFixed(0) + "%";
-        console.log(userScore);
+
+        // add score to html
         $("#user-score").html(userScore);
     }
 
